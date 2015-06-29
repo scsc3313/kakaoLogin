@@ -25,6 +25,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.security.GeneralSecurityException;
+
 import com.kakao.APIErrorResult;
 import com.kakao.KakaoTalkHttpResponseHandler;
 import com.kakao.KakaoTalkProfile;
@@ -42,6 +45,8 @@ public class KakaoTalkMainActivity extends Activity {
     private UserProfile userProfile;
     private ProfileLayout profileLayout;
     private TextView countryISOText;
+    private CheckingkActivity checking = new CheckingkActivity();
+    
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -127,6 +132,7 @@ public class KakaoTalkMainActivity extends Activity {
 
     private void initializeView() {
         setContentView(R.layout.main);
+        set();
         initializeButtons();
         initializeProfileView();
     }
@@ -152,5 +158,17 @@ public class KakaoTalkMainActivity extends Activity {
     private void initializeProfileView() {
         profileLayout = (ProfileLayout) findViewById(R.id.com_kakao_user_profile);
         countryISOText = (TextView) findViewById(R.id.country);
+    }
+    
+    
+    private void set()
+    {	
+    	Intent intent = getIntent();
+		TextView name = (TextView) findViewById(R.id.name);
+		name.setText(intent.getExtras().getString("name"));
+		TextView age = (TextView) findViewById(R.id.age);
+		age.setText(intent.getExtras().getString("age"));
+		TextView area = (TextView) findViewById(R.id.area);
+		area.setText(intent.getExtras().getString("area"));
     }
 }

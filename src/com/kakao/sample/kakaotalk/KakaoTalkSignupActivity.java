@@ -31,9 +31,15 @@ public class KakaoTalkSignupActivity extends SampleSignupActivity {
         startActivity(intent);
         finish();
     }
+    
+//    protected void redirectCheckingActivity() {
+//        final Intent intent = new Intent(this, CheckingkActivity.class);
+//        startActivity(intent);
+//        finish();
+//    }
 
     protected void redirectMainActivity() {
-        final Intent intent = new Intent(this, KakaoTalkMainActivity.class);
+        final Intent intent = new Intent(this, CheckingkActivity.class);
         startActivity(intent);
         finish();
     }
