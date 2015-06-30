@@ -19,6 +19,7 @@ package com.kakao.sample.kakaotalk;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -163,12 +164,12 @@ public class KakaoTalkMainActivity extends Activity {
     
     private void set()
     {	
-    	Intent intent = getIntent();
+    	SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
 		TextView name = (TextView) findViewById(R.id.name);
-		name.setText(intent.getExtras().getString("name"));
+		name.setText(pref.getString("name", ""));
 		TextView age = (TextView) findViewById(R.id.age);
-		age.setText(intent.getExtras().getString("age"));
+		age.setText(pref.getString("age", ""));
 		TextView area = (TextView) findViewById(R.id.area);
-		area.setText(intent.getExtras().getString("area"));
+		area.setText(pref.getString("area", ""));
     }
 }

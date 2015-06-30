@@ -17,8 +17,10 @@
  */
 package com.kakao.sample.kakaotalk;
 
-import android.content.Intent;
 import com.kakao.template.loginbase.SampleSignupActivity;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
 
 /**
  * 유효한 세션이 있다는 검증 후
@@ -31,16 +33,23 @@ public class KakaoTalkSignupActivity extends SampleSignupActivity {
         startActivity(intent);
         finish();
     }
-    
-//    protected void redirectCheckingActivity() {
-//        final Intent intent = new Intent(this, CheckingkActivity.class);
-//        startActivity(intent);
-//        finish();
-//    }
 
     protected void redirectMainActivity() {
-        final Intent intent = new Intent(this, CheckingkActivity.class);
+    	SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+    	
+    	String name;
+    	name = pref.getString("name", "");
+    	if(name == "")
+    		redirectCheckingActivity();
+    	
+        final Intent intent = new Intent(this, KakaoTalkMainActivity.class);
         startActivity(intent);
         finish();
     }
+    
+    void redirectCheckingActivity() {
+		 final Intent intent = new Intent(this, CheckingkActivity.class);
+	     startActivity(intent);
+	     finish();
+	}
 }
